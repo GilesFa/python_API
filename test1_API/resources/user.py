@@ -15,16 +15,16 @@ parser.add_argument('note')
 
 class Users(Resource):
     def db_init(self):
-        db = pymysql.connect(host="127.0.0.1", database="api_test", user="root", password="umec@123")
+        db = pymysql.connect(host="192.168.0.2", database="api_test", user="root", password="umec@123")
         cursor = db.cursor(pymysql.cursors.DictCursor)
         return db, cursor
         
     def get(self):
         db, cursor = self.db_init()
-        arg = parser.parse_args()
+        #arg = parser.parse_args()
         sql = """select * from api_test.users where deleted is not True"""
-        if arg['name'] != None:
-            sql += ' and name ="{}" '.format(arg['name'])
+        #if arg['name'] != None:
+        #    sql += ' and name ="{}" '.format(arg['name'])
         cursor.execute(sql)
         users = cursor.fetchall()
         db.commit()
