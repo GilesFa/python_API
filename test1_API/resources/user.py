@@ -15,7 +15,7 @@ parser.add_argument('note')
 
 class Users(Resource):
     def db_init(self):
-        db = pymysql.connect(host="192.168.0.2", database="api_test", user="root", password="umec@123")
+        db = pymysql.connect(host="db", database="api_test", user="root", password="12345")
         cursor = db.cursor(pymysql.cursors.DictCursor)
         return db, cursor
         
